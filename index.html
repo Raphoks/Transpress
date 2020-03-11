@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Transpress - Tradutor do dev</title>
+    <meta name="description" content="Tradutor de inputs para wordpress" />
+    <meta name="keywords" content="Tradutor, Input, Wordpress" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Thomcoder" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/v4-shims.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" href="/img/Logo-white.png" />
+  </head>
+
+  <body>
+    <header class="cabecalho">
+      <a href="index.html"> <h1 class="logo">Transpress</h1></a>
+
+      <button class="btn-menu"><i class="fas fa-bars fa-lg"></i></button>
+      <nav class="menu">
+        <a class="btn-close"><i class="far fa-times-circle"></i>
+
+        </a>
+        <ul>
+          <li><a href="#">Início</a></li>
+          <li><a href="#">Traduzir código</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Ajude manter</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div class="banner">
+      <div class="title">
+        <h2>TRANSPRESS</h2> </br>
+        <h3>Traduza aqui seus inputs para o plugin de formulário do Wordpress</h3>
+      </div>
+      <!--
+      <div class="buttons">
+        <button class="btn-sobre">O que é Transpress? <i class="far fa-question-circle"></i></button>
+        <button class="btn-contribuir">Contribuir <i class="fab fa-github-square"></i></button>
+      </div>-->
+    </div>
+      
+    <section class="converter-codigo">
+      <div class="converter-title">
+        <h2>Cole seu input</h2>
+      </div>
+      <div class="tradutor-in">
+        <textarea placeholder="Cole seu input..." class="code-in" id="code-in" rows="4" ></textarea>
+          
+      </div>
+      <div class="button-traduzir">
+        <button class="btn-traduzir">Traduzir</button>
+      </div>
+    </section>
+    <section class="codigo-traduzido">
+      <div class="convertido-title">
+       <h2> Input traduzido</h2>
+       <div class="tradutor-out">
+        <textarea placeholder="" class="code-out" id="code-out" rows="4" ></textarea>
+          
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="social">
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"> <i class="fab fa-github"></i></a>
+        <a href="#"> <i class="fab fa-instagram"></i></a>
+      </div>
+      <p class="copyright"> Desenvolvido por <a href="#">ThomCoder</a>, mantido pela comunidade.</p>
+    </footer>
+
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script>
+      $('.btn-traduzir').click(function(){
+        $('.codigo-traduzido').fadeIn();
+        var code_in = document.getElementById("code-in")
+        //var code_out = code_in.value.replace ('<input','[').replace ('/>',']').replace ('class="', 'class: ')
+        // var code_in = document.getElementById("code-in")
+        // var code_out = code_in.value.replace ('/>',']')
+        //console.log('string: ', code_in.value)
+        var elem = $(code_in.value)
+        var type = elem[0].getAttribute('type')
+        var id = elem[0].getAttribute('id')
+        var clas = elem[0].getAttribute('class')
+        var place = elem[0].getAttribute('placeholder')
+
+        //[text* client_nome id:formNome-cotacao class:form-control placeholder
+        //         "Nome Completo"]
+        $('#code-out').val('[' + type + ' GENÉRICO ' +' id:'+ id +  ' class:'+ clas + ' placeholder "' + place + '"' + ' ]' );
+        //console.log('[' + type + ' GENÉRICO ' +' id:'+ id +  ' class:'+ clas + ' placeholder "' + place + '"' + ' ]' )
+        
+
+        
+
+
+      })
+    </script>
+    <script>
+  
+      $('.btn-menu').click(function() {
+        $('.menu').fadeIn();
+        $('.btn-menu').fadeOut();
+      });
+      $('.btn-close').click(function() {
+        $('.menu').fadeOut();
+        $('.btn-menu').fadeIn();
+      });
+    </script>
+  </body>
+</html>
